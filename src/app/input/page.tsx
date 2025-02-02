@@ -7,7 +7,7 @@ export default function Input() {
             <div>
                 <DescriptionFeature />
             </div>
-            <div>
+            <div className="flex justify-center ">
                 <FormFeature />
             </div>
         </section>
