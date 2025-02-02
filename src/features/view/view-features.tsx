@@ -8,8 +8,6 @@ import { LineChart } from "@mui/x-charts";
 export default function ViewFeature() {
     const items = localStorage.getItem("items");
     const value = items ? JSON.parse(items) : null;
-    console.log(value?.items[1].description);
-    console.log(value.items.length);
 
     const arr = [...Array(value.items.length).keys()].map(i => i + 1);
 

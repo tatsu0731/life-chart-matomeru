@@ -1,6 +1,7 @@
 import Header from "@/components/header";
 import "./globals.css";
 import Footer from "@/components/footer";
+import ToastProvider from "@/components/toastProvider";
 
 export default function RootLayout({
   children,
@@ -10,11 +11,13 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body>
-        <Header />
-        <main className="flex justify-center">
-          {children}
-        </main>
-        <Footer />
+        <ToastProvider>
+          <Header />
+          <main className="flex justify-center">
+            {children}
+          </main>
+          <Footer />
+        </ToastProvider>
       </body>
     </html>
   );
