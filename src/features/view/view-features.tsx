@@ -1,9 +1,33 @@
 "use client";
+
+import { LineChart } from "@mui/x-charts";
+
+// TODO: dataの配列のデカさ分だけ配列の長さを生成してxAxisに入れる
+// TODO: ここら辺もっとスマートに書ける気がする
+
 export default function ViewFeature() {
-    const value = localStorage.getItem("items");
+    const items = localStorage.getItem("items");
+    const value = items ? JSON.parse(items) : null;
+    console.log(value?.items[1].description);
+    console.log(value.items.length);
+
+    const arr = [...Array(value.items.length).keys()].map(i => i + 1);
+
+    const descriptionList = value?.items.map(item => item.value) || [];
+    console.log(descriptionList);
+
     return (
         <div>
-            <h1 className="text-2xl">View: {value}</h1>
+            <LineChart
+                xAxis={[{ data: arr }]}
+                series={[
+                    {
+                        data: descriptionList,
+                    },
+                ]}
+                width={1000}
+                height={500}
+            />
         </div>
     );
 }
