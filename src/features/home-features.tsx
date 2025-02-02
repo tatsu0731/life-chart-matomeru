@@ -16,9 +16,11 @@ export default function HomeFeature() {
             </div>
             <div className="flex flex-col gap-4">
                 <p>それでは早速使ってみましょう！</p>
+                <div className="flex justify-center mb-8">
                 <Link href={"/input"}>
                     <Button title="人生曲線を作成する" />
                 </Link>
+                </div>
             </div>
         </section>
     );
