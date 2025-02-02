@@ -1,5 +1,9 @@
+import HomeFeature from "@/features/home-features";
+
 export default function Home() {
   return (
-    <p>初期設定</p>
+    <section className="flex justify-center">
+      <HomeFeature />
+    </section>
   );
 }
