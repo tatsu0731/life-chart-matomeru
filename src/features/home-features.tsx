@@ -3,10 +3,10 @@ import Link from "next/link";
 
 export default function HomeFeature() {
     return (
-        <section className="flex flex-col gap-8">
+        <section className="flex flex-col gap-8 w-2/3 mt-24 text-gray-600">
             <div className="flex flex-col gap-4">
                 <h2 className="text-xl font-bold">■ 人生曲線とは？</h2>
-                <p>これまでの自分の人生を数値として表すことで客観的に振り返ることを狙っています。過去を振り返ることで、自分を分析し将来の判断に活かせると思われます</p>
+                <p>これまでの自分の人生を数値として表すことで客観的に振り返ることを狙っています。過去を振り返ることで、自分を分析し将来の判断に活かせると思われます。</p>
             </div>
             <div className="flex flex-col gap-4">
                 <h2 className="text-xl font-bold">■ 使い方</h2>

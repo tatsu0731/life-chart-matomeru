@@ -13,7 +13,7 @@ export default function ViewFeature() {
 
     const arr = [...Array(value.items.length).keys()].map(i => i + 1);
 
-    const descriptionList = value?.items.map(item => item.value) || [];
+    const descriptionList = value?.items.map((item: { value: string; }) => item.value) || [];
     console.log(descriptionList);
 
     return (

@@ -6,7 +6,7 @@ import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 
 const schema = z.object({
-    items: z.array(z.object({ value: z.string(), description: z.string() })),
+    items: z.array(z.object({ value: z.string(), description: z.string() })).min(2),
 });
 
 type FormData = z.infer<typeof schema>;
