@@ -1,6 +1,7 @@
 "use client";
 import Button from "@/components/button";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { redirect } from "next/navigation";
 import { useFieldArray, useForm } from "react-hook-form";
 import { z } from "zod";
 
@@ -28,8 +29,8 @@ export default function FormFeature() {
     });
 
     const onSubmit = (data: FormData) => {
-        console.log("登録できてねーぞ");
-        console.log(data.items);;;
+        localStorage.setItem('items', JSON.stringify(data));
+        redirect('/view');
     };
 
     return (
