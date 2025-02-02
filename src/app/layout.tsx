@@ -11,7 +11,9 @@ export default function RootLayout({
     <html lang="ja">
       <body>
         <Header />
-        {children}
+        <main className="flex justify-center">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>
