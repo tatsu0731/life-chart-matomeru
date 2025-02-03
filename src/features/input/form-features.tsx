@@ -20,7 +20,7 @@ export default function FormFeature() {
         resolver: zodResolver(schema),
         mode: 'onChange',
         defaultValues: {
-            items: [initialValue]
+            items: Array(18).fill(initialValue)
         }
     });
 
@@ -45,13 +45,12 @@ export default function FormFeature() {
             className="flex flex-col justify-center gap-8 py-8 w-96">
             <div className="flex flex-col gap-4 h-96 overflow-scroll">
             {fields.map((field, index) => {
-                const checkDelete = fields.length !== 1
                 return (
                     <div key={field.id}>
                         <div className="border-2 border-yellow-300 py-4 px-4 rounded-lg">
                             <div className="flex justify-between">
                                 <div className="text-xl">■ {index + 1}歳</div>
-                                {checkDelete && <p onClick={() => remove(index)} className="text-red-400">削除</p>}
+                                {fields.length - 1 === index && <p onClick={() => remove(index)} className="text-red-400 cursor-pointer">削除</p>}
                             </div>
                             <label htmlFor={`items.${index}.value`}>
                                 評価
