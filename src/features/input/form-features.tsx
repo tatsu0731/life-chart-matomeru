@@ -16,7 +16,7 @@ const initialValue = {value: "", description: ""};
 
 export default function FormFeature() {
 
-    const { register, handleSubmit, control, formState: {errors} } = useForm<FormData>({
+    const { register, handleSubmit, control } = useForm<FormData>({
         resolver: zodResolver(schema),
         mode: 'onChange',
         defaultValues: {
