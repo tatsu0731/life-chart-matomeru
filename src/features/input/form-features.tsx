@@ -81,7 +81,7 @@ export default function FormFeature() {
                         </div>
                         {fields.length - 1 === index &&
                         <div className="flex justify-center mt-4">
-                            <p onClick={() => append(initialValue)} className="font-bold py-2 px-12 bg-yellow-400 rounded-full text-white hover:opacity-70">追加</p>
+                            <p onClick={() => append(initialValue)} className="font-bold py-2 px-12 bg-yellow-400 rounded-full text-white shadow-md hover:opacity-70">追加</p>
                         </div>
                         }
                     </div>
