@@ -60,8 +60,7 @@ export default function FormFeature() {
                                     {...register(
                                         `items.${index}.value`
                                     )}
-                                className="border-2 py-1 px-2 rounded-md w-14"
-                                >
+                                className="border-2 py-1 px-2 rounded-md w-14 bg-gray-100 font-normal">
                                     {[...Array(10)].map((_, i) => (
                                         <option key={i} value={i + 1}>{i + 1}</option>
                                     ))}
@@ -70,13 +69,14 @@ export default function FormFeature() {
                             <label htmlFor={`items.${index}.description`} className="text-sm text-gray-600 font-bold flex flex-col">
                                 出来事
                                 <input
+                                    placeholder="出来事を記入してください"
                                     required
                                     defaultValue={field.description}
                                     id={`items.${index}.description`}
                                     {...register(
                                         `items.${index}.description`
                                     )}
-                                className="border-2 py-1 px-2 rounded-md"></input>
+                                className="border-2 py-1 px-2 rounded-md bg-gray-100 font-normal"></input>
                             </label>
                         </div>
                         {fields.length - 1 === index &&
