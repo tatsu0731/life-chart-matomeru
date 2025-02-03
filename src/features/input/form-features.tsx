@@ -3,10 +3,11 @@ import Button from "@/components/button";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { redirect } from "next/navigation";
 import { useFieldArray, useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import { z } from "zod";
 
 const schema = z.object({
-    items: z.array(z.object({ value: z.string(), description: z.string() })),
+    items: z.array(z.object({ value: z.string().min(1, {message: "必須項目です"}), description: z.string().min(1, {message: "必須項目です"}) })),
 });
 
 type FormData = z.infer<typeof schema>;
@@ -28,10 +29,15 @@ export default function FormFeature() {
         name: 'items'
     });
 
-    const onSubmit = (data: FormData) => {
+    const onSubmit = async (data: FormData) => {
+        await toa();
         localStorage.setItem('items', JSON.stringify(data));
         redirect('/view');
     };
+
+    const toa = () => {
+        return toast.success("登録完了しました")
+    }
 
     return (
         <form
@@ -50,6 +56,7 @@ export default function FormFeature() {
                             <label htmlFor={`items.${index}.value`}>
                                 評価
                                 <select id={`items.${index}.value`}
+                                required
                                 defaultValue={field.value}
                                     {...register(
                                         `items.${index}.value`
@@ -64,6 +71,7 @@ export default function FormFeature() {
                             <label htmlFor={`items.${index}.description`}>
                                 出来事
                                 <input
+                                    required
                                     defaultValue={field.description}
                                     id={`items.${index}.description`}
                                     {...register(

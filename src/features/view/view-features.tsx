@@ -1,20 +1,23 @@
 "use client";
-
+import { useEffect, useState } from "react";
 import { LineChart } from "@mui/x-charts";
 
-// TODO: dataの配列のデカさ分だけ配列の長さを生成してxAxisに入れる
-// TODO: ここら辺もっとスマートに書ける気がする
-
 export default function ViewFeature() {
-    const items = localStorage.getItem("items");
-    const value = items ? JSON.parse(items) : null;
-    console.log(value?.items[1].description);
-    console.log(value.items.length);
+    const [value, setValue] = useState<{ items: { value: number; description: string }[] } | null>(null);
 
-    const arr = [...Array(value.items.length).keys()].map(i => i + 1);
+    useEffect(() => {
+        if (typeof window !== "undefined") { // クライアントサイドのみ実行
+            const items = localStorage.getItem("items");
+            if (items) {
+                setValue(JSON.parse(items));
+            }
+        }
+    }, []);
 
-    const descriptionList = value?.items.map(item => item.value) || [];
-    console.log(descriptionList);
+    if (!value) return <div>Loading...</div>; // データが取得されるまで Loading 表示
+
+    // `xAxis` のデータを作成
+    const arr = Array.from({ length: value.items.length }, (_, i) => i + 1);
 
     return (
         <div>
@@ -22,7 +25,7 @@ export default function ViewFeature() {
                 xAxis={[{ data: arr }]}
                 series={[
                     {
-                        data: descriptionList,
+                        data: value.items.map(item => item.value),
                     },
                 ]}
                 width={1000}
