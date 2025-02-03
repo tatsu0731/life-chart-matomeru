@@ -49,12 +49,13 @@ export default function FormFeature() {
                     <div key={field.id}>
                         <div className="border-2 border-yellow-300 py-4 px-4 rounded-lg flex flex-col gap-4">
                             <div className="flex justify-between">
-                                <div className="text-xs text-yellow-500">■ {index + 1}歳</div>
+                                <div className="text-base text-yellow-500 font-bold">{index + 1}歳</div>
                                 {fields.length - 1 === index && <p onClick={() => remove(index)} className="text-red-400 cursor-pointer">削除</p>}
                             </div>
-                            <label htmlFor={`items.${index}.value`} className="text-sm text-gray-600 font-bold flex flex-col">
+                            <label htmlFor={`items.${index}.value`} className="text-sm text-gray-600 font-bold flex flex-col gap-2">
                                 評価
                                 <select id={`items.${index}.value`}
+
                                 required
                                 defaultValue={field.value}
                                     {...register(
@@ -66,7 +67,7 @@ export default function FormFeature() {
                                     ))}
                                 </select>
                             </label>
-                            <label htmlFor={`items.${index}.description`} className="text-sm text-gray-600 font-bold flex flex-col">
+                            <label htmlFor={`items.${index}.description`} className="text-sm text-gray-600 font-bold flex flex-col gap-2">
                                 出来事
                                 <input
                                     placeholder="出来事を記入してください"
@@ -77,11 +78,12 @@ export default function FormFeature() {
                                         `items.${index}.description`
                                     )}
                                 className="border-2 py-1 px-2 rounded-md bg-gray-100 font-normal"></input>
+                                {index === 0 && <p className="text-xs font-normal text-gray-400">例：サッカー部で全国大会出場</p>}
                             </label>
                         </div>
                         {fields.length - 1 === index &&
                         <div className="flex justify-center mt-4">
-                            <p onClick={() => append(initialValue)} className="font-bold py-2 px-12 bg-yellow-400 rounded-full text-white shadow-md hover:opacity-70">追加</p>
+                            <p onClick={() => append(initialValue)} className="font-bold py-2 px-12 bg-yellow-400 rounded-full text-white shadow-md cursor-pointer hover:opacity-70">追加</p>
                         </div>
                         }
                     </div>
