@@ -43,16 +43,16 @@ export default function FormFeature() {
         <form
             onSubmit={handleSubmit(onSubmit)}
             className="flex flex-col justify-center gap-8 py-8 w-96">
-            <div className="flex flex-col gap-4 h-96 overflow-scroll">
+            <div className="flex flex-col gap-4">
             {fields.map((field, index) => {
                 return (
                     <div key={field.id}>
                         <div className="border-2 border-yellow-300 py-4 px-4 rounded-lg">
                             <div className="flex justify-between">
-                                <div className="text-xl">■ {index + 1}歳</div>
+                                <div className="text-xs text-yellow-500">■ {index + 1}歳</div>
                                 {fields.length - 1 === index && <p onClick={() => remove(index)} className="text-red-400 cursor-pointer">削除</p>}
                             </div>
-                            <label htmlFor={`items.${index}.value`}>
+                            <label htmlFor={`items.${index}.value`} className="text-sm text-gray-600 font-bold">
                                 評価
                                 <select id={`items.${index}.value`}
                                 required
@@ -67,7 +67,7 @@ export default function FormFeature() {
                                     ))}
                                 </select>
                             </label>
-                            <label htmlFor={`items.${index}.description`}>
+                            <label htmlFor={`items.${index}.description`} className="text-sm text-gray-600 font-bold">
                                 出来事
                                 <input
                                     required
