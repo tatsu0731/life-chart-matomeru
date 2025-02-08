@@ -17,7 +17,7 @@ const CustomTooltip: React.FC<TooltipProps<number, string>> = ({ active, payload
             <div className="border-2 border-yellow-500 bg-white p-2 rounded-lg opacity-70 shadow-md">
                 {payload.map((data, index) => (
                     <div key={index}>
-                        <p className="font-bold text-yellow-500">{`■ ${data.payload.name}歳`}</p>
+                        <p className="font-bold text-yellow-500">{`■ ${data.payload.age}歳`}</p>
                         <p className="font-bold text-gray-700">{`評価: ${data.value}`}</p>
                         <p>{`出来事：${data.payload.description}`}</p>
                     </div>
@@ -41,7 +41,7 @@ const LineChartComponent: React.FC = () => {
 
                 // `data` の形式に変換
                 const formattedData: ChartData[] = parsedItems.map((item: { value: string; description: string }, index: number) => ({
-                    name: index + 1,  // X 軸には番号 (1, 2, 3...)
+                    age: index + 1,  // X 軸には番号 (1, 2, 3...)
                     value: Number(item.value),   // Y 軸に数値 (value)
                     description: item.description, /// 出来事
                 }));
@@ -56,8 +56,8 @@ const LineChartComponent: React.FC = () => {
             <ResponsiveContainer width="100%" height="100%">
                 <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
+                    <XAxis dataKey="age" />
+                    <YAxis domain={[0, 10]} ticks={[0, 2, 4, 6, 8, 10]}/>
                     <Tooltip content={<CustomTooltip />} />
                     <Legend />
                     <Line type="monotone" dataKey="value" stroke="#eab308" strokeWidth={3} />
