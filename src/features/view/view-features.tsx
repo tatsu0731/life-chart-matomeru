@@ -1,5 +1,5 @@
 "use client";
-import { FullDate } from "@/utils/date";
+import { DashDate, FullDate } from "@/utils/date";
 import html2canvas from "html2canvas";
 import dynamic from "next/dynamic";
 import React, { useEffect, useRef, useState } from "react";
@@ -64,12 +64,13 @@ const LineChartComponent: React.FC = () => {
         // ダウンロード用リンクを作成
         const link = document.createElement("a");
         link.href = image;
-        link.download = "screenshot.png";
+        link.download = `人生曲線${dateForPng}.png`;
         document.body.appendChild(link);
         link.click();
         document.body.removeChild(link);
     };
 
+    const dateForPng = DashDate();
     const date = FullDate();
 
     return (
