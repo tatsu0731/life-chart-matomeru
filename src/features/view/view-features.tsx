@@ -1,4 +1,5 @@
 "use client";
+import { FullDate } from "@/utils/date";
 import html2canvas from "html2canvas";
 import dynamic from "next/dynamic";
 import React, { useEffect, useRef, useState } from "react";
@@ -69,8 +70,13 @@ const LineChartComponent: React.FC = () => {
         document.body.removeChild(link);
     };
 
+    const date = FullDate();
+
     return (
         <div className="w-[1000px] h-[400px] m-24" ref={captureRef}>
+            <div className="flex justify-start">
+                <p className="m-4 text-yellow-500 font-bold">{date}の人生曲線</p>
+            </div>
             <ResponsiveContainer width="100%" height="100%" className=" bg-gray-100 py-12 rounded-xl">
                 <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                     <CartesianGrid strokeDasharray="3 3" />
